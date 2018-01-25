@@ -4,17 +4,16 @@ const Email = require('../models/email.model');
 const User = require('../models/user.model');
 const jwt = require("jsonwebtoken");
 
-router.get("/", function(req, res, next){
+router.get("/:token", function(req, res, next){ // Inbox
     const token = req.params.token;
     jwt.verify(token, "secret", function(err, decoded){
         if(err){
             return res.status(500).json({
                 title: "Cannot decoded token.",
-                token: token,
                 error: err
             });
         } 
-        Email.find({user: decoded.user._id}, 
+        Email.find({getter: decoded.user.email}, 
                    function(err, emails){
             if(err){
                 return res.status(500).json({
@@ -23,13 +22,11 @@ router.get("/", function(req, res, next){
                 });
             }
             res.status(200).json({
-                title: 'An email sent successfully',
+                title: 'An email object has get successfully',
                 obj: emails
             });
         });
     });
-
-
 });
 
 router.post("/compose", function(req, res, next){
@@ -50,8 +47,13 @@ router.post("/compose", function(req, res, next){
                 });
             } 
 
+            const date = new Date();
+            
             const email = new Email({
-                sender: req.body.sender,
+                getter: req.body.getter,
+                sender: decoded.user.email,
+                sendername: decoded.user.username,
+                date: date,
                 subject: req.body.subject,
                 message: req.body.message,
                 user: user

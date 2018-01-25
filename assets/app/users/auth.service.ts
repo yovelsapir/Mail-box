@@ -14,7 +14,7 @@ export class AuthService {
     private userName: string = null;
     private email: string = null;
     private compose = false;
-    
+
     onCompose(){
         return this.compose = !this.compose;
     }
@@ -53,11 +53,23 @@ export class AuthService {
         }
     }
 
-    getInboxMails(){
-        return this.http.get("http://localhost:3000/dashboard/inbox").map((response: Response) => response.json()).catch((error: Response) => Observable.throw(error.json()));  
+     getInboxMails(){
+        const token = localStorage.getItem("token");
+
+        if(token != undefined){
+            return this.http.get("http://localhost:3000/dashboard/inbox/" + token).map((response: Response) => response.json()).catch((error: Response) => Observable.throw(error.json()));  
+        }
+    }
+    
+    getSentMails(){
+        const token = localStorage.getItem("token");
+
+        if(token != undefined){
+            return this.http.get("http://localhost:3000/dashboard/sent/" + token).map((response: Response) => response.json()).catch((error: Response) => Observable.throw(error.json()));  
+        }
     }
 
-    
+
     saveEmail(data){
         const body = JSON.stringify(data);
 

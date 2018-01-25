@@ -10,6 +10,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 import { AuthService } from './users/auth.service';
 import { HeaderIndex } from './headers/header.index';
 import { InboxComponent } from './dashboard/Inbox/inbox.component';
+import { SentComponent } from './dashboard/Sent/sent.component';
 import { ComposeComponent } from './dashboard/compose/compose.component';
 
 import { routing } from './app.routing';
@@ -22,7 +23,8 @@ import { routing } from './app.routing';
         DashboardComponent,
         HeaderIndex,
         InboxComponent,
-        ComposeComponent
+        ComposeComponent,
+        SentComponent
     ],
     imports: [
         BrowserModule,

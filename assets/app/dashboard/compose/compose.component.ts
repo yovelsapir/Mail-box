@@ -16,7 +16,7 @@ export class ComposeComponent implements OnInit{
 
     onSubmit(){
         const data = {
-            sender: this.composeForm.value.email,
+            getter: this.composeForm.value.email,
             subject: this.composeForm.value.subject,
             message: this.composeForm.value.message,
             token: localStorage.getItem("token")

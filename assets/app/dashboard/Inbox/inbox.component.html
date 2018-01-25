@@ -21,9 +21,9 @@
                     <table class="table table-bordered">
                         <tbody>
                             <tr *ngFor="let obj of emails">
-                                <td><input type="checkbox"/></td>
+                                <td><input type="checkbox"/><span>{{obj.sendername}}</span></td>
                                 <td>{{obj.subject}}</td>
-                                <td>{{obj.content}}</td>
+                                <td>{{obj.message}}</td>
                                 <td>{{obj.date}}</td>
                             </tr>
                         </tbody>

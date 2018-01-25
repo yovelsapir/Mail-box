@@ -3,6 +3,34 @@ const router = express.Router();
 const bycrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 const User = require('../models/user.model');
+const Email = require('../models/email.model');
+
+router.get("/sent/:token", function(req, res, next){ // sent mails
+    const token = req.params.token;
+    jwt.verify(token, "secret", function(err, decoded){
+        if(err){
+            return res.status(500).json({
+                title: "Cannot decoded token.",
+                token: token,
+                error: err
+            });
+        } 
+        Email.find({sender: decoded.user.email}, 
+                   function(err, emails){
+            if(err){
+                return res.status(500).json({
+                    title: 'ERROR: email cannot sent.',
+                    error: err
+                });
+            }
+
+            res.status(200).json({
+                title: 'An email object has get successfully',
+                obj: emails
+            });
+        });
+    });
+});
 
 router.post("/", function(req, res, next){
     const result = {

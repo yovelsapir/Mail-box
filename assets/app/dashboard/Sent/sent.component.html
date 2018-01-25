@@ -1,0 +1,20 @@
+<div class="col-md-10 col-sm-8" style="padding: 0;">
+    <div class="jumbotron dashboard">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr *ngFor="let obj of emails">
+                                <td><input type="checkbox"/><span>{{obj.getter}}</span></td>
+                                <td>{{obj.subject}}</td>
+                                <td>{{obj.message}}</td>
+                                <td>{{obj.date}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

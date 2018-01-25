@@ -5,6 +5,7 @@ import { RegisterComponent } from "./users/register/signup.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { HeaderIndexComponent } from "./headers/header.index";
 import { InboxComponent } from "./dashboard/Inbox/inbox.component";
+import { SentComponent } from "./dashboard/Sent/sent.component";
 
 const APP_ROUTES: Routes = [
     { path: '', redirectTo: '/signin', pathMatch: 'full' },
@@ -15,7 +16,7 @@ const APP_ROUTES: Routes = [
         children: [
             {path: '', redirectTo: '/dashboard/inbox', pathMatch: 'full' }, 
             {path: 'inbox', component: InboxComponent },
-            {path: 'sentmail', component: InboxComponent }
+            {path: 'sentmail', component: SentComponent }
         ]
     }
 ];

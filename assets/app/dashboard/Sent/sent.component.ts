@@ -6,22 +6,22 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'inbox-page',
-    templateUrl: './inbox.component.html',
-    styleUrls: ['./inbox.component.css']
+    selector: 'sent-page',
+    templateUrl: './sent.component.html',
+    styleUrls: ['./sent.component.css']
 })
 
-export class InboxComponent implements OnInit{
+export class SentComponent implements OnInit{
     constructor(private _AuthService: AuthService){}
     
     private emails: string = [];
     
     ngOnInit(){
-        this.getInboxMails();
+        this.getSentMails();
     }
     
-    getInboxMails(){
-        this._AuthService.getInboxMails().subscribe(
+    getSentMails(){
+        this._AuthService.getSentMails().subscribe(
             response => {
                 this.emails = response.obj;
                 console.log(response);   

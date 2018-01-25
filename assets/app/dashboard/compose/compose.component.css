@@ -1,0 +1,12 @@
+.sent_mail_panel{
+    position: fixed;
+    top: 0;
+    z-index: 99;
+    height: 100vh;
+    width: 100%;
+    background: #3a3a3ab8;
+}
+
+.compose-flex{
+    margin-top: 100px;
+}

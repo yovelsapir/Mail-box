@@ -1,0 +1,26 @@
+.well-style{
+    margin-bottom: 0;
+    min-height: 600px;
+    border-radius: 0;
+}
+
+.dashboard{
+    min-height: 567px;
+}
+
+.jumbotron{
+    margin: 0;
+}
+
+.row{
+    margin: 0;
+}
+
+.table tr td{
+    padding: 15px;
+}
+
+.table tr:hover{
+    background-color: #d6d6d6;
+    cursor: pointer;
+}

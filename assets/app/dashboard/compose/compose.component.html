@@ -1,0 +1,42 @@
+<div *ngIf="this._AuthService.getCompose()" class="sent_mail_panel">
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+                    <div class="panel panel-default compose-flex">
+                        <div class="panel-heading text-center">
+                            <span class="glyphicon glyphicon-remove pull-right" (click)='this._AuthService.onCompose();'></span>
+                            <h2>Compose</h2>
+                        </div>
+
+                        <div class="panel-body">
+                            <form [formGroup]="composeForm" (ngSubmit)="onSubmit()">
+                                <div class="form-group">
+                                    <label for="email">To:</label>
+                                    <input type="text" id="email" class="form-control" name="email" placeholder="Enter a email" formControlName="email"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Subject:</label>
+                                    <input type="text" id="subject" class="form-control" name="subject" placeholder="Enter a Subject" formControlName="subject"/>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject">Message:</label>
+                                    <textarea id="message" class="form-control" name="message" rows="6" style="resize: none;" placeholder="Enter a Message" formControlName="message"></textarea>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-md btn-default pull-right" [disabled]="!composeForm.valid">Sent</button>
+                            </form>
+                        </div>
+
+                        <div class="panel-footer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,62 +1,15 @@
-<header>
-    <div class="container-fluid-fixed">
-        <nav class="nav-flex navbar navbar-default">
-            <div class="nav-right">
-                <ul>
-                    <a href="#"><li>Signin</li></a>
-                    <a href="#"><li>Signup</li></a>
-                </ul>
-            </div>
-            
-            <div class="nav-left">
-                <ul>
-                    <a href="#" class="navbar-brand"><li>LOGO</li></a>
-                    <a href="#"><li>HOME</li></a>
-                    <a href="#"><li>HOME</li></a>
-                    <a href="#"><li>HOME</li></a>
-                </ul>
-            </div>
-        </nav>
+
+<div class="container-fluid-fixed">
+    <div class="row">
+        <header-index></header-index>
+
+        <router-outlet></router-outlet>     
     </div>
-</header>
+</div>
 
-
-<section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                        <h2>LOGIN PANEL</h2>
-                    </div>
-
-                    <div class="panel-body">
-                        <form>
-                            <div class="form-group">
-                                <label for="username">Username:</label>
-                                <input type="text" id="username" class="form-control" name="username" placeholder="Enter a username"/>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="username">Password:</label>
-                                <input type="text" id="password" class="form-control" name="password" placeholder="Enter a password"/>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-md btn-default pull-right">Login</button>
-                        </form>
-                    </div>
-
-                    <div class="panel-footer">
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  
-</section>
-
-
-<footer>
-    
+<footer class="text-center">
+    <h3>
+        <span class="glyphicon glyphicon-copyright-mark"></span>
+        Copyright all rights reserved.
+    </h3> 
 </footer>

@@ -1,0 +1,104 @@
+
+<div class="col-md-2 col-sm-4" style="padding: 0;" *ngIf='isLogged()'>
+    <div class="sidebar-nav">
+        <div class="well">
+            <ul class="nav nav-list"> 
+                <div class="nav-header">
+                    <div class="container-fluid-fixed">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="https://www.walldevil.com/wallpapers/a70/3751-wallpapers-abstract-hqcyber-gallery.jpg" class="img img-header" alt="User picture"/>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row user_details">
+                            <ul>
+                                <li>
+                                    <a href="#">{{this._AuthService.getUserName() | titlecase}}</a>
+                                </li>
+
+                                <li><a href="#">{{getEmail()}}</a></li>
+
+                                <a [routerLink]="['/']" style="text-decoration: none;"><li class="header-logout">Logout</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="compose">
+                    <button class="btn btn-danger" (click)="this._AuthService.onCompose()">Compose</button>
+                </div>
+
+
+
+                <div class="navigation">
+                    <div class="container-fluid-fixed ">
+                        <div *ngFor="let obj of categories; let i = index" class="row option">
+                            <div class="col-sm-offset-2 col-sm-8 " style="padding: 0;">
+                                <li><a [routerLink]="['./dashboard/' + obj.link]"><i class="icon-envelope"></i> {{obj.name}} <span class="badge badge-info pull-right">{{i}}</span></a></li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr/>
+
+                <div class="btn-container">
+                    <button class="btn btn-info"></button>
+                    <button class="btn btn-default"></button>
+                    <button class="btn btn-success"></button>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>   
+
+<header>
+    <nav>
+        <div [ngClass]="{'col-md-10 col-sm-8': isLogged()}" style="padding: 0;">
+            <div class="navbar navbar-default navbar-logged" *ngIf='isLogged()'>
+                <div class="container-fluid-fixed">
+                    <div class="row nav-row-center" >
+                        <div class="col-sm-6 logo col-md-9">
+                            <span>Inbox</span>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Mail">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit">
+                                        <i class="glyphicon glyphicon-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="navbar navbar-default navbar-not-logged" *ngIf='!isLogged()'>
+                <div class="container-fluid-fixed">
+                    <div class="row nav-row-center">
+                        <div class="col-sm-3 logo col-md-9">
+                            <span>Logo</span>
+                        </div>
+
+                        <div class="col-sm-9 col-md-3 nav-col-flex">
+                            <ul class="nav-flex">
+                                <a [routerLink]="['signup']"><li routerLinkActive="active">Signup</li></a>
+
+                                <a [routerLink]="['signin']"><li routerLinkActive="active">Signin</li></a>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<compose-selector></compose-selector>
+
+
+

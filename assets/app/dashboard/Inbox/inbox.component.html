@@ -12,7 +12,7 @@
                             </div>
 
                             <div class="col-sm-4 pull-right">
-                                <span class="pull-right">1-50 of 249</span>
+                                <span class="pull-right">1-{{this.getLength("inbox") > 20 ? (20) : (this.getLength("inbox"))}} of {{this.getLength("inbox")}}</span>
                             </div>
                         </div>
                     </div>

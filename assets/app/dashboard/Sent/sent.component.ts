@@ -24,9 +24,20 @@ export class SentComponent implements OnInit{
         this._AuthService.getSentMails().subscribe(
             response => {
                 this.emails = response.obj;
+                console.log(this.getCategory("inbox"));
                 console.log(response);   
             }, 
             error => console.log(error)
         );
+    }
+    
+    getCategory(category){
+        return this.emails.filter((value) => {
+           return value.category == category;
+        });    
+    }
+    
+    getLength(){
+        return this.emails.length;
     }
 }

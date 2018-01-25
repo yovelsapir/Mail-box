@@ -13,20 +13,31 @@ import { Observable } from 'rxjs';
 
 export class InboxComponent implements OnInit{
     constructor(private _AuthService: AuthService){}
-    
+
     private emails: string = [];
-    
+
     ngOnInit(){
         this.getInboxMails();
     }
-    
+
     getInboxMails(){
-        this._AuthService.getInboxMails().subscribe(
+        this._AuthService.getSentMails().subscribe(
             response => {
                 this.emails = response.obj;
+                console.log(this.getLength("inbox"));
                 console.log(response);   
             }, 
             error => console.log(error)
         );
+    }
+
+    getCategory(category){
+        return this.emails.filter((value) => {
+            return value.category == category;
+        });    
+    }
+
+    getLength(category){
+        return this.getCategory(category).length;
     }
 }

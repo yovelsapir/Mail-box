@@ -56,6 +56,7 @@ router.post("/compose", function(req, res, next){
                 date: date,
                 subject: req.body.subject,
                 message: req.body.message,
+                category: "inbox",
                 user: user
             });
 

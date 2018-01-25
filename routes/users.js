@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const bycrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 const jwt = require("jsonwebtoken");
 
 var User = require('../models/user.model');
@@ -9,7 +9,7 @@ router.post('/', function(req, res, next){
     const user = new User({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password,
+        password: bcrypt.hashSync(req.body.password, 10),
         level: req.body.level
     });
 
@@ -42,12 +42,14 @@ router.post('/signin', function(req, res, next){
                 error: {message: 'Invalid login credentials'}
             }); 
         }
-        if(user.password != req.body.password){
+        
+        if(!bcrypt.compareSync(req.body.password, user.password)){
             return res.status(401).json({
                 title: 'Login failed',
                 error: {message: 'Invalid login credentials'}
             }); 
         }
+                 
         var token = jwt.sign({user: user}, 'secret', {expiresIn: 7200});
         
         res.status(200).json({

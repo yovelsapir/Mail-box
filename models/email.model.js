@@ -8,6 +8,7 @@ var schema = new Schema({
     date: {type: String, required: true},
     subject: {type: String, required: true},
     message: {type: String, required: true},
+    category: {type: String, required: true},
     user: {type: Schema.Types.ObjectId, ref: 'User'}
 });
 

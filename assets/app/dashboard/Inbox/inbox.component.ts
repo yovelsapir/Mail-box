@@ -40,4 +40,26 @@ export class InboxComponent implements OnInit{
     getLength(category){
         return this.getCategory(category).length;
     }
+    
+    getCheckedMails(index){
+        this.emails[index].checked = !this.emails[index].checked;
+        
+        console.log(this.getCheckedEmailsArray());
+        
+    }
+    
+    getCheckedEmailsArray(){
+        const result = this.emails.filter((element) => 
+            return element.checked == true;
+        );
+        return result;
+    }
+    
+    checkedAll(flag){
+        console.log(flag);
+        this.emails.forEach((element) => {
+            element.checked = flag;
+        });
+        console.log(this.emails);
+    }
 }
